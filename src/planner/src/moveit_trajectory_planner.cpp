@@ -11,7 +11,6 @@
 #include "../include/search.hpp"
 #include "../include/moveit_planner.hpp"
 #include "../include/trajectory_generator.hpp"
-#include <visualization_msgs/Marker.h>
 #include <ros/callback_queue.h>
 #include <thread>
 #include <mutex>
@@ -169,7 +168,6 @@ int main(int argc, char **argv)
     spinner.start();
     moveit::planning_interface::PlanningSceneInterface planning_scene_interface;
     ros::Rate r(1);
-    ros::Publisher marker_pub = node_handle.advertise<visualization_msgs::Marker>("visualization_marker", 10);
 
     //创建规划器类
     Trajectory_Planner planner1(node_handle, "arm1");
@@ -189,50 +187,6 @@ int main(int argc, char **argv)
         // 机械臂1和机械臂2的轨迹点对
         pose_array.push_back(pair_posev); 
     }           
-
-    //创建一个 visualization_msgs/Marker消息，并且初始化所有共享的数据。消息成员默认为0，仅仅设置位姿成员w。
-    visualization_msgs::Marker points1, points2;
-    points1.header.frame_id = points2.header.frame_id =  "base_ground";
-    points1.header.stamp = points2.header.stamp = ros::Time::now();
-    points1.ns = points2.ns = "wtkd_planner";
-    points1.action = points2.action = visualization_msgs::Marker::ADD;
-    points1.pose.orientation.w = points2.pose.orientation.w = 1.0;
-    //分配2个不同的id到三个markers,确保彼此不会相互冲突。
-    points1.id = 0;
-    points2.id = 1;
-    //设置marker类型
-    points1.type = visualization_msgs::Marker::POINTS;
-    points2.type = visualization_msgs::Marker::POINTS;
-    points1.scale.x = 0.02;
-    points1.scale.y = 0.02;
-    points2.scale.x = 0.02;
-    points2.scale.y = 0.02;
-    // 1点为绿色
-    points1.color.g = 1.0f;
-    points1.color.a = 1.0;
-    points2.color.b = 1.0;
-    points2.color.a = 1.0;
-
-    for (const auto& posev : circle_1.circle_posev)
-    {
-        geometry_msgs::Point p;
-        p.x = posev.position.x();
-        p.y = posev.position.y();
-        p.z = posev.position.z();
-        points1.points.push_back(p);
-    }
-    for (const auto& posev : circle_2.circle_posev)
-    {
-        geometry_msgs::Point p;
-        p.x = posev.position.x();
-        p.y = posev.position.y();
-        p.z = posev.position.z();
-        points2.points.push_back(p);
-    }
-    //发布各个markers
-    marker_pub.publish(points1);
-    marker_pub.publish(points2);
-    ros::Duration().sleep(); 
 
     // 启动机械臂轨迹规划线程
     controlArms(planner1, planner2, pose_array, is_execute);
