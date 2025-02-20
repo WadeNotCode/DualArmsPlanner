@@ -1,0 +1,742 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="m20id_35">
+    <link name="base_ground">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+        <inertial>
+            <mass value="0.1" />
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <inertia ixx="0.03" iyy="0.03" izz="0.03" ixy="0.0" ixz="0.0" iyz="0.0" />
+        </inertial>
+    </link>
+    <joint name="arm1_base" type="fixed">
+        <origin xyz="-0.75 -1 0" rpy="0 0 -0.6435" />
+        <parent link="base_ground" />
+        <child link="base_link_1" />
+    </joint>
+    <joint name="arm2_base" type="fixed">
+        <origin xyz="0.75 1 0" rpy="0 0 2.4981" />
+        <parent link="base_ground" />
+        <child link="base_link_2" />
+    </joint>
+    <link name="base_link_1">
+        <inertial>
+            <origin xyz="-0.0038198 -0.023633 0.098793" rpy="0 0 0" />
+            <mass value="5.1351" />
+            <inertia ixx="0.081423" ixy="-0.00084571" ixz="-0.00050805" iyy="0.06095" iyz="0.0044562" izz="0.11291" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.2 0.2 0.2 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="shoulder_link_1">
+        <inertial>
+            <origin xyz="-0.02343 0.011327 0.17427" rpy="0 0 0" />
+            <mass value="18.964" />
+            <inertia ixx="0.34346" ixy="-0.027541" ixz="0.040558" iyy="0.33663" iyz="-0.014122" izz="0.30546" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/shoulder_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/shoulder_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint11" type="revolute">
+        <origin xyz="0 0 0.157" rpy="0 0 0" />
+        <parent link="base_link_1" />
+        <child link="shoulder_link_1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.047" upper="1.047" effort="0" velocity="3.1416" />
+    </joint>
+    <link name="arm_link_1">
+        <inertial>
+            <origin xyz="-0.35456 -0.047138 0.10163" rpy="0 0 0" />
+            <mass value="20.745" />
+            <inertia ixx="0.12979" ixy="-0.048401" ixz="-0.033424" iyy="1.9258" iyz="0.023229" izz="1.9688" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/arm_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/arm_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint12" type="revolute">
+        <origin xyz="0.08002 0.075 0.268" rpy="0 1.5708 0" />
+        <parent link="shoulder_link_1" />
+        <child link="arm_link_1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-2.7925" upper="1.7453" effort="0" velocity="3.1416" />
+    </joint>
+    <link name="elbow_link_1">
+        <inertial>
+            <origin xyz="-0.11262 0.14159 -0.098843" rpy="0 0 0" />
+            <mass value="13.845" />
+            <inertia ixx="0.22875" ixy="0.096602" ixz="-0.0012023" iyy="0.2356" iyz="0.014056" izz="0.28145" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/elbow_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/elbow_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint13" type="revolute">
+        <origin xyz="-0.84 0 -0.01752" rpy="0 0 0" />
+        <parent link="arm_link_1" />
+        <child link="elbow_link_1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-1.4788" upper="4.1888" effort="0" velocity="3.4907" />
+    </joint>
+    <link name="forearm_link_1">
+        <inertial>
+            <origin xyz="0.0002881 -0.063255 0.27256" rpy="0 0 0" />
+            <mass value="8.6186" />
+            <inertia ixx="0.1009" ixy="2.3705E-06" ixz="2.2342E-05" iyy="0.099253" iyz="0.0099493" izz="0.028818" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/forearm_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/forearm_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint14" type="revolute">
+        <origin xyz="-0.215 0.29574 -0.0625" rpy="-1.5708 0 0" />
+        <parent link="elbow_link_1" />
+        <child link="forearm_link_1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.4907" upper="3.4907" effort="0" velocity="6.1087" />
+    </joint>
+    <link name="wrist_link_1">
+        <inertial>
+            <origin xyz="-1.7388E-06 -0.030158 0.032589" rpy="0 0 0" />
+            <mass value="0.50503" />
+            <inertia ixx="0.0012932" ixy="1.9229E-08" ixz="-9.9312E-09" iyy="0.0013329" iyz="0.00033609" izz="0.0015121" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wrist_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.2 0.2 0.2 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wrist_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint15" type="revolute">
+        <origin xyz="0 -0.0525 0.59426" rpy="-1.5708 0 0" />
+        <parent link="forearm_link_1" />
+        <child link="wrist_link_1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.1416" upper="3.1416" effort="0" velocity="6.1087" />
+    </joint>
+    <link name="hand_link_1">
+        <inertial>
+            <origin xyz="-8.2599E-11 7.2805E-18 0.02528" rpy="0 0 0" />
+            <mass value="0.14987" />
+            <inertia ixx="0.00013691" ixy="2.3225E-16" ixz="-2.3192E-13" iyy="0.00013695" iyz="-3.9883E-21" izz="0.00020789" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/hand_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.2 0.2 0.2 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/hand_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint16" type="revolute">
+        <origin xyz="0 -0.0308 0.0525" rpy="1.5708 0 0" />
+        <parent link="wrist_link_1" />
+        <child link="hand_link_1" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="0" velocity="6.9813" />
+    </joint>
+    <joint name="joint17" type="fixed">
+        <origin xyz="0 0 0.124" rpy="0 0 0" />
+        <parent link="hand_link_1" />
+        <child link="detector" />
+    </joint>
+    <link name="detector">
+        <inertial>
+            <origin xyz="-1.7388E-06 -0.030158 0.032589" rpy="0 0 0" />
+            <mass value="0.50503" />
+            <inertia ixx="0.0012932" ixy="1.9229E-08" ixz="-9.9312E-09" iyy="0.0013329" iyz="0.00033609" izz="0.0015121" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/detector.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.3 0.3 0.3 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/detector.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="base_link_2">
+        <inertial>
+            <origin xyz="-0.0038198 -0.023633 0.098793" rpy="0 0 0" />
+            <mass value="5.1351" />
+            <inertia ixx="0.081423" ixy="-0.00084571" ixz="-0.00050805" iyy="0.06095" iyz="0.0044562" izz="0.11291" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.2 0.2 0.2 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="shoulder_link_2">
+        <inertial>
+            <origin xyz="-0.02343 0.011327 0.17427" rpy="0 0 0" />
+            <mass value="18.964" />
+            <inertia ixx="0.34346" ixy="-0.027541" ixz="0.040558" iyy="0.33663" iyz="-0.014122" izz="0.30546" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/shoulder_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/shoulder_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint21" type="revolute">
+        <origin xyz="0 0 0.157" rpy="0 0 0" />
+        <parent link="base_link_2" />
+        <child link="shoulder_link_2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.2289" upper="3.2289" effort="0" velocity="3.1416" />
+    </joint>
+    <link name="arm_link_2">
+        <inertial>
+            <origin xyz="-0.35456 -0.047138 0.10163" rpy="0 0 0" />
+            <mass value="20.745" />
+            <inertia ixx="0.12979" ixy="-0.048401" ixz="-0.033424" iyy="1.9258" iyz="0.023229" izz="1.9688" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/arm_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/arm_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint22" type="revolute">
+        <origin xyz="0.08002 0.075 0.268" rpy="0 1.5708 0" />
+        <parent link="shoulder_link_2" />
+        <child link="arm_link_2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-2.7925" upper="1.7453" effort="0" velocity="3.1416" />
+    </joint>
+    <link name="elbow_link_2">
+        <inertial>
+            <origin xyz="-0.11262 0.14159 -0.098843" rpy="0 0 0" />
+            <mass value="13.845" />
+            <inertia ixx="0.22875" ixy="0.096602" ixz="-0.0012023" iyy="0.2356" iyz="0.014056" izz="0.28145" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/elbow_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/elbow_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint23" type="revolute">
+        <origin xyz="-0.84 0 -0.01752" rpy="0 0 0" />
+        <parent link="arm_link_2" />
+        <child link="elbow_link_2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.3161" upper="4.6775" effort="0" velocity="3.4907" />
+    </joint>
+    <link name="forearm_link_2">
+        <inertial>
+            <origin xyz="0.0002881 -0.063255 0.27256" rpy="0 0 0" />
+            <mass value="8.6186" />
+            <inertia ixx="0.1009" ixy="2.3705E-06" ixz="2.2342E-05" iyy="0.099253" iyz="0.0099493" izz="0.028818" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/forearm_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 0.1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/forearm_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint24" type="revolute">
+        <origin xyz="-0.215 0.29574 -0.0625" rpy="-1.5708 0 0" />
+        <parent link="elbow_link_2" />
+        <child link="forearm_link_2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.4907" upper="3.4907" effort="0" velocity="6.1087" />
+    </joint>
+    <link name="wrist_link_2">
+        <inertial>
+            <origin xyz="-1.7388E-06 -0.030158 0.032589" rpy="0 0 0" />
+            <mass value="0.50503" />
+            <inertia ixx="0.0012932" ixy="1.9229E-08" ixz="-9.9312E-09" iyy="0.0013329" iyz="0.00033609" izz="0.0015121" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wrist_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.2 0.2 0.2 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wrist_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint25" type="revolute">
+        <origin xyz="0 -0.0525 0.59426" rpy="-1.5708 0 0" />
+        <parent link="forearm_link_2" />
+        <child link="wrist_link_2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.1416" upper="3.1416" effort="0" velocity="6.1087" />
+    </joint>
+    <link name="hand_link_2">
+        <inertial>
+            <origin xyz="-8.2599E-11 7.2805E-18 0.02528" rpy="0 0 0" />
+            <mass value="0.14987" />
+            <inertia ixx="0.00013691" ixy="2.3225E-16" ixz="-2.3192E-13" iyy="0.00013695" iyz="-3.9883E-21" izz="0.00020789" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/hand_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.2 0.2 0.2 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/hand_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint26" type="revolute">
+        <origin xyz="0 -0.0308 0.0525" rpy="1.5708 0 0" />
+        <parent link="wrist_link_2" />
+        <child link="hand_link_2" />
+        <axis xyz="0 0 1" />
+        <limit lower="-3.14" upper="3.14" effort="0" velocity="6.9813" />
+    </joint>
+    <joint name="joint27" type="fixed">
+        <origin xyz="0 0 0.124" rpy="0 0 0" />
+        <parent link="hand_link_2" />
+        <child link="x_ray_generator" />
+    </joint>
+    <link name="x_ray_generator">
+        <inertial>
+            <origin xyz="-1.7388E-06 -0.030158 0.032589" rpy="0 0 0" />
+            <mass value="0.50503" />
+            <inertia ixx="0.0012932" ixy="1.9229E-08" ixz="-9.9312E-09" iyy="0.0013329" iyz="0.00033609" izz="0.0015121" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/MXR225MF.STL" scale="0.001 0.001 0.001" />
+            </geometry>
+            <material name="">
+                <color rgba="0.7 0.7 0.7 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="-1.5708 0 -1.5708" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/MXR225MF.STL" scale="0.001 0.001 0.001" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint28" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="x_ray_generator" />
+        <child link="x_ray_beam" />
+    </joint>
+    <link name="x_ray_beam">
+        <inertial>
+            <origin xyz="-1.7388E-06 -0.030158 0.032589" rpy="0 0 0" />
+            <mass value="0.50503" />
+            <inertia ixx="0.0012932" ixy="1.9229E-08" ixz="-9.9312E-09" iyy="0.0013329" iyz="0.00033609" izz="0.0015121" />
+        </inertial>
+        <visual>
+            <origin xyz="0 -0.2 0.6" rpy="-3.1416 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/cone.STL" scale="1 1 1" />
+            </geometry>
+            <material name="">
+                <color rgba="0.9 0.9 0.9 0.2" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 -0.2 0.6" rpy="-3.1416 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/cone.STL" scale="1 1 1" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint00" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_ground" />
+        <child link="wall" />
+    </joint>
+    <link name="wall">
+        <inertial>
+            <origin xyz="0 0 0 " rpy="0 0 0" />
+            <mass value="1e7" />
+            <inertia ixx="1e6" ixy="1e6" ixz="1e6" iyy="1e6" iyz="1e6" izz="1e6" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wall.STL" scale="1 1 1" />
+            </geometry>
+            <material name="">
+                <color rgba="1.0 0.0 0.0 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wall.STL" scale="1 1 1" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint01" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_ground" />
+        <child link="floor" />
+    </joint>
+    <link name="floor">
+        <inertial>
+            <origin xyz="0 0 0 " rpy="0 0 0" />
+            <mass value="1e7" />
+            <inertia ixx="1e6" ixy="1e6" ixz="1e6" iyy="1e6" iyz="1e6" izz="1e6" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/floor.STL" scale="1 1 1" />
+            </geometry>
+            <material name="">
+                <color rgba="0.8 0.0 0.0 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0.0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/floor.STL" scale="1 1 1" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint02" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_ground" />
+        <child link="ceil" />
+    </joint>
+    <link name="ceil">
+        <inertial>
+            <origin xyz="0 0 0 " rpy="0 0 0" />
+            <mass value="1e7" />
+            <inertia ixx="1e6" ixy="1e6" ixz="1e6" iyy="1e6" iyz="1e6" izz="1e6" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 2.5" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/floor.STL" scale="1 1 1" />
+            </geometry>
+            <material name="">
+                <color rgba="0.8 0.0 0.0 0.1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 2.5" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/floor.STL" scale="1 1 1" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="joint03" type="fixed">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="base_ground" />
+        <child link="object" />
+    </joint>
+    <link name="object">
+        <inertial>
+            <origin xyz="0 0 0 " rpy="0 0 0" />
+            <mass value="1e7" />
+            <inertia ixx="1e6" ixy="1e6" ixz="1e6" iyy="1e6" iyz="1e6" izz="1e6" />
+        </inertial>
+        <visual>
+            <origin xyz="-6.5 -4 0.5" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wings_defected.STL" scale="1 1 1" />
+            </geometry>
+            <material name="">
+                <color rgba="0.0 1.0 0.0 1.0" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="-6.5 -4 0.5" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://m20id_35/meshes/wings_defected.STL" scale="1 1 1" />
+            </geometry>
+        </collision>
+    </link>
+    <transmission name="trans_joint11">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint11">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint11_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint12">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint12">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint12_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint13">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint13">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint13_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint14">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint14">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint14_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint15">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint15">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint15_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint16">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint16">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint16_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint21">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint21">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint21_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint22">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint22">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint22_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint23">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint23">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint23_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint24">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint24">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint24_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint25">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint25">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint25_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_joint26">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="joint26">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="joint26_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+

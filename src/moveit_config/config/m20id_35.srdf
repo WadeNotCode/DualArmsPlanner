@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--This does not replace URDF, and is not an extension of URDF.
+    This is a format for representing semantic information about the robot structure.
+    A URDF file must exist for this robot as well, where the joints and the links that are referenced are defined
+-->
+<robot name="m20id_35">
+    <!--GROUPS: Representation of a set of joints and links. This can be useful for specifying DOF to plan for, defining arms, end effectors, etc-->
+    <!--LINKS: When a link is specified, the parent joint of that link (if it exists) is automatically included-->
+    <!--JOINTS: When a joint is specified, the child link of that joint (which will always exist) is automatically included-->
+    <!--CHAINS: When a chain is specified, all the links along the chain (including endpoints) are included in the group. Additionally, all the joints that are parents to included links are also included. This means that joints along the chain and the parent joint of the base link are included in the group-->
+    <!--SUBGROUPS: Groups can also be formed by referencing to already defined group names-->
+    <group name="arm1">
+        <link name="base_link_1"/>
+        <link name="shoulder_link_1"/>
+        <link name="arm_link_1"/>
+        <link name="elbow_link_1"/>
+        <link name="forearm_link_1"/>
+        <link name="wrist_link_1"/>
+        <link name="detector"/>
+        <joint name="arm1_base"/>
+        <joint name="joint11"/>
+        <joint name="joint12"/>
+        <joint name="joint13"/>
+        <joint name="joint14"/>
+        <joint name="joint15"/>
+        <joint name="joint16"/>
+        <chain base_link="base_link_1" tip_link="hand_link_1"/>
+    </group>
+    <group name="arm2">
+        <joint name="arm2_base"/>
+        <joint name="joint21"/>
+        <joint name="joint22"/>
+        <joint name="joint23"/>
+        <joint name="joint24"/>
+        <joint name="joint25"/>
+        <joint name="joint26"/>
+        <chain base_link="base_link_2" tip_link="hand_link_2"/>
+    </group>
+    <!--GROUP STATES: Purpose: Define a named state for a particular group, in terms of joint values. This is useful to define states like 'folded arms'-->
+    <group_state name="start" group="arm1">
+        <joint name="joint11" value="0"/>
+        <joint name="joint12" value="0"/>
+        <joint name="joint13" value="0"/>
+        <joint name="joint14" value="0"/>
+        <joint name="joint15" value="0"/>
+        <joint name="joint16" value="0"/>
+    </group_state>
+    <group_state name="test" group="arm1">
+        <joint name="joint11" value="-0.164"/>
+        <joint name="joint12" value="1.1702"/>
+        <joint name="joint13" value="-1.1221"/>
+        <joint name="joint14" value="-0.4665"/>
+        <joint name="joint15" value="-0.0724"/>
+        <joint name="joint16" value="1.939"/>
+    </group_state>
+    <!--DISABLE COLLISIONS: By default it is assumed that any link of the robot could potentially come into collision with any other link in the robot. This tag disables collision checking between a specified pair of links. -->
+    <disable_collisions link1="arm_link_1" link2="arm_link_2" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="base_ground" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="base_link_2" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="ceil" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="elbow_link_1" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_1" link2="elbow_link_2" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="forearm_link_1" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="hand_link_1" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="shoulder_link_1" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_1" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="virtual_wall" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="wall" reason="Never"/>
+    <disable_collisions link1="arm_link_1" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="base_ground" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="base_link_1" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="ceil" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="elbow_link_1" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="elbow_link_2" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_2" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="arm_link_2" link2="shoulder_link_2" reason="Adjacent"/>
+    <disable_collisions link1="arm_link_2" link2="virtual_wall" reason="Default"/>
+    <disable_collisions link1="arm_link_2" link2="wall" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="base_link_1" reason="Adjacent"/>
+    <disable_collisions link1="base_ground" link2="base_link_2" reason="Adjacent"/>
+    <disable_collisions link1="base_ground" link2="ceil" reason="Adjacent"/>
+    <disable_collisions link1="base_ground" link2="detector" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="elbow_link_1" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="elbow_link_2" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="floor" reason="Adjacent"/>
+    <disable_collisions link1="base_ground" link2="forearm_link_1" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="forearm_link_2" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="hand_link_1" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="hand_link_2" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="virtual_wall" reason="Adjacent"/>
+    <disable_collisions link1="base_ground" link2="wall" reason="Adjacent"/>
+    <disable_collisions link1="base_ground" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="wrist_link_2" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="x_ray_beam" reason="Never"/>
+    <disable_collisions link1="base_ground" link2="x_ray_generator" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="base_link_2" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="ceil" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="elbow_link_2" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="floor" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="forearm_link_2" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="hand_link_2" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="shoulder_link_1" reason="Adjacent"/>
+    <disable_collisions link1="base_link_1" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="virtual_wall" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="wall" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="wrist_link_2" reason="Never"/>
+    <disable_collisions link1="base_link_1" link2="x_ray_generator" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="ceil" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="detector" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="elbow_link_1" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="floor" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="forearm_link_1" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="hand_link_1" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="shoulder_link_2" reason="Adjacent"/>
+    <disable_collisions link1="base_link_2" link2="virtual_wall" reason="Default"/>
+    <disable_collisions link1="base_link_2" link2="wall" reason="Never"/>
+    <disable_collisions link1="base_link_2" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="ceil" link2="elbow_link_1" reason="Never"/>
+    <disable_collisions link1="ceil" link2="elbow_link_2" reason="Never"/>
+    <disable_collisions link1="ceil" link2="floor" reason="Never"/>
+    <disable_collisions link1="ceil" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="ceil" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="ceil" link2="virtual_wall" reason="Default"/>
+    <disable_collisions link1="ceil" link2="wall" reason="Default"/>
+    <disable_collisions link1="detector" link2="elbow_link_1" reason="Never"/>
+    <disable_collisions link1="detector" link2="hand_link_1" reason="Adjacent"/>
+    <disable_collisions link1="detector" link2="hand_link_2" reason="Never"/>
+    <disable_collisions link1="detector" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="detector" link2="virtual_wall" reason="Never"/>
+    <disable_collisions link1="detector" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="detector" link2="x_ray_beam" reason="Default"/>
+    <disable_collisions link1="elbow_link_1" link2="elbow_link_2" reason="Never"/>
+    <disable_collisions link1="elbow_link_1" link2="forearm_link_1" reason="Adjacent"/>
+    <disable_collisions link1="elbow_link_1" link2="hand_link_1" reason="Never"/>
+    <disable_collisions link1="elbow_link_1" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="elbow_link_1" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="elbow_link_1" link2="virtual_wall" reason="Never"/>
+    <disable_collisions link1="elbow_link_1" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="elbow_link_1" link2="x_ray_beam" reason="Default"/>
+    <disable_collisions link1="elbow_link_2" link2="forearm_link_2" reason="Adjacent"/>
+    <disable_collisions link1="elbow_link_2" link2="hand_link_2" reason="Never"/>
+    <disable_collisions link1="elbow_link_2" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="elbow_link_2" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="elbow_link_2" link2="wrist_link_2" reason="Never"/>
+    <disable_collisions link1="elbow_link_2" link2="x_ray_generator" reason="Never"/>
+    <disable_collisions link1="floor" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="floor" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="floor" link2="virtual_wall" reason="Default"/>
+    <disable_collisions link1="floor" link2="wall" reason="Default"/>
+    <disable_collisions link1="forearm_link_1" link2="hand_link_1" reason="Never"/>
+    <disable_collisions link1="forearm_link_1" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="forearm_link_1" link2="virtual_wall" reason="Never"/>
+    <disable_collisions link1="forearm_link_1" link2="wrist_link_1" reason="Adjacent"/>
+    <disable_collisions link1="forearm_link_1" link2="x_ray_beam" reason="Default"/>
+    <disable_collisions link1="forearm_link_2" link2="hand_link_2" reason="Never"/>
+    <disable_collisions link1="forearm_link_2" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="forearm_link_2" link2="wrist_link_2" reason="Adjacent"/>
+    <disable_collisions link1="forearm_link_2" link2="x_ray_generator" reason="Default"/>
+    <disable_collisions link1="hand_link_1" link2="hand_link_2" reason="Never"/>
+    <disable_collisions link1="hand_link_1" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="hand_link_1" link2="virtual_wall" reason="Never"/>
+    <disable_collisions link1="hand_link_1" link2="wrist_link_1" reason="Adjacent"/>
+    <disable_collisions link1="hand_link_1" link2="wrist_link_2" reason="Never"/>
+    <disable_collisions link1="hand_link_1" link2="x_ray_beam" reason="Default"/>
+    <disable_collisions link1="hand_link_2" link2="shoulder_link_1" reason="Never"/>
+    <disable_collisions link1="hand_link_2" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="hand_link_2" link2="wrist_link_2" reason="Adjacent"/>
+    <disable_collisions link1="hand_link_2" link2="x_ray_beam" reason="Never"/>
+    <disable_collisions link1="hand_link_2" link2="x_ray_generator" reason="Adjacent"/>
+    <disable_collisions link1="shoulder_link_1" link2="shoulder_link_2" reason="Never"/>
+    <disable_collisions link1="shoulder_link_1" link2="virtual_wall" reason="Never"/>
+    <disable_collisions link1="shoulder_link_1" link2="wall" reason="Never"/>
+    <disable_collisions link1="shoulder_link_1" link2="wrist_link_2" reason="Never"/>
+    <disable_collisions link1="shoulder_link_1" link2="x_ray_generator" reason="Never"/>
+    <disable_collisions link1="shoulder_link_2" link2="virtual_wall" reason="Default"/>
+    <disable_collisions link1="shoulder_link_2" link2="wall" reason="Never"/>
+    <disable_collisions link1="shoulder_link_2" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="virtual_wall" link2="wall" reason="Default"/>
+    <disable_collisions link1="virtual_wall" link2="wrist_link_1" reason="Never"/>
+    <disable_collisions link1="wrist_link_1" link2="x_ray_beam" reason="Default"/>
+    <disable_collisions link1="wrist_link_2" link2="x_ray_beam" reason="Never"/>
+    <disable_collisions link1="wrist_link_2" link2="x_ray_generator" reason="Default"/>
+    <disable_collisions link1="x_ray_beam" link2="x_ray_generator" reason="Adjacent"/>
+    <disable_collisions link1="base_link_1" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="shoulder_link_1" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="arm_link_1" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="base_link_2" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="shoulder_link_2" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="arm_link_2" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="elbow_link_2" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="forearm_link_2" link2="x_ray_beam" reason="User"/>
+    <disable_collisions link1="elbow_link_2" link2="virtual_wall" reason="User"/>
+    <disable_collisions link1="forearm_link_2" link2="virtual_wall" reason="User"/>
+    <disable_collisions link1="virtual_wall" link2="wrist_link_2" reason="User"/>
+    <disable_collisions link1="hand_link_2" link2="virtual_wall" reason="User"/>
+    <disable_collisions link1="virtual_wall" link2="x_ray_generator" reason="User"/>
+</robot>

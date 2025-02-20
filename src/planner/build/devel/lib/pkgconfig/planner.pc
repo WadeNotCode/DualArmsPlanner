@@ -1,0 +1,8 @@
+prefix=/home/zhw/trajectory_planner/src/planner/build/devel
+
+Name: planner
+Description: Description of planner
+Version: 0.0.0
+Cflags: -I/home/zhw/trajectory_planner/src/planner/build/devel/include
+Libs: -L${prefix}/lib 
+Requires: message_runtime

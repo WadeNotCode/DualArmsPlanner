@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: m20id_35
+    relative_path: urdf/m20id_35.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/m20id_35.srdf
+  CONFIG:
+    author_name: hanwen
+    author_email: 1922300017@qq.com
+    generated_timestamp: 1735096799

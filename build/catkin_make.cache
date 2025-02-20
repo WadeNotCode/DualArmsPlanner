@@ -1,0 +1,2 @@
+m20id_35:moveit_config:planner
+-DCATKIN_DEVEL_PREFIX=/home/legion/dual_arms/trajectory_planner/devel -DCMAKE_INSTALL_PREFIX=/home/legion/dual_arms/trajectory_planner/install -G Unix Makefiles

@@ -1,0 +1,8 @@
+prefix=/home/legion/dual_arms/trajectory_planner/install
+
+Name: m20id_35
+Description: Description of m20id_35
+Version: 1.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
